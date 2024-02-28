@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+    <xacro:property name="lidar_radius" value="0.03"/>
+    <xacro:property name="lidar_height" value="0.025"/>
+    <xacro:property name="lidar_mass" value="0.17"/>
+    <xacro:property name="lidar_offset_z" value="0.0625"/>
+    <xacro:property name="lidar_min_range" value="0.3"/>
+    <xacro:property name="lidar_max_range" value="12.0"/>
+
     <joint name="laser_joint" type="fixed">
         <parent link="chassis"/>
         <child link="laser_frame"/>
-        <origin xyz="0 0 0.10" rpy="0 0 0"/>
+        <origin xyz="0 0 ${lidar_offset_z}" rpy="0 0 0"/>
     </joint>
 
     <link name="laser_frame">
         <visual>
             <geometry>
-                <cylinder radius="0.05" length="0.04"/>
-            </geometry>
-            <material name="black"/>
-        </visual>
-        <visual>
-            <origin xyz="0 0 -0.03"/>
-            <geometry>
-                <cylinder radius="0.01" length="0.02"/>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
             </geometry>
             <material name="black"/>
         </visual>
         <collision>
             <geometry>
-                <cylinder radius="0.05" length="0.04"/>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
+        <xacro:inertial_cylinder mass="${lidar_mass}" length="${lidar_height}" radius="${lidar_radius}">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -36,9 +36,10 @@
     <gazebo reference="laser_frame">
         <material>Gazebo/Black</material>
 
-        <sensor name="laser" type="ray">
+        <sensor name="rplidar" type="ray">
             <pose> 0 0 0 0 0 0 </pose>
-            <visualize>false</visualize>
+            <visualize>true</visualize>
+            <always_on>true</always_on>
             <update_rate>10</update_rate>
             <ray>
                 <scan>
@@ -49,13 +50,13 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.3</min>
-                    <max>12</max>
+                    <min>${lidar_min_range}</min>
+                    <max>${lidar_max_range}</max>
                 </range>
             </ray>
             <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
                 <ros>
-                    <argument>~/out:=scan</argument>
+                    <argument>--ros-args --remap ~/out:=scan</argument>
                 </ros>
                 <output_type>sensor_msgs/LaserScan</output_type>
                 <frame_name>laser_frame</frame_name>
