@@ -492,23 +492,8 @@
         <kinematic>0</kinematic>
       </link>
       <static>0</static>
-      <plugin name='skid_steer_drive' filename='libgazebo_ros_diff_drive.so'>
-        <num_wheel_pairs>2</num_wheel_pairs>
-        <left_joint>front_left_wheel_joint</left_joint>
-        <right_joint>front_right_wheel_joint</right_joint>
-        <left_joint>rear_left_wheel_joint</left_joint>
-        <right_joint>rear_right_wheel_joint</right_joint>
-        <wheel_separation>0.14</wheel_separation>
-        <wheel_separation>0.14</wheel_separation>
-        <wheel_diameter>0.05</wheel_diameter>
-        <wheel_diameter>0.05</wheel_diameter>
-        <max_wheel_torque>20</max_wheel_torque>
-        <max_wheel_acceleration>1.0</max_wheel_acceleration>
-        <publish_odom>1</publish_odom>
-        <publish_odom_tf>1</publish_odom_tf>
-        <publish_wheel_tf>1</publish_wheel_tf>
-        <odometry_frame>odom</odometry_frame>
-        <robot_base_frame>base_link</robot_base_frame>
+      <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+        <parameters>/home/ubuntu/libot_ws/install/libot/share/libot/config/my_controllers.yaml</parameters>
       </plugin>
       <pose>0 0 0 0 -0 0</pose>
     </model>
@@ -1074,13 +1059,13 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-0.069809 -1.56985 0 0 -0 0</pose>
+      <pose>0.280885 -2.01317 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>76 277000000</sim_time>
-      <real_time>76 654382823</real_time>
-      <wall_time>1710926492 853720235</wall_time>
-      <iterations>76277</iterations>
+      <sim_time>57 261000000</sim_time>
+      <real_time>57 617359839</real_time>
+      <wall_time>1714587926 896281161</wall_time>
+      <iterations>57261</iterations>
       <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -1092,44 +1077,44 @@
         </link>
       </model>
       <model name='my_lidar_bot'>
-        <pose>-0.000672 0.003208 0.074999 0 -1.7e-05 -9.7e-05</pose>
+        <pose>0.000256 0.000424 0.074997 3.4e-05 1e-06 -0.000702</pose>
         <scale>1 1 1</scale>
         <link name='base_link'>
-          <pose>-0.000672 0.003208 0.074999 0 -1.7e-05 -9.7e-05</pose>
-          <velocity>-0.000638 4.1e-05 1e-06 -7e-06 -0.035651 4.5e-05</velocity>
-          <acceleration>-2.14606 0.000186 0.002858 3.13634 -0.95515 -3.05116</acceleration>
-          <wrench>-2.14606 0.000186 0.002858 0 -0 0</wrench>
+          <pose>0.000256 0.000424 0.074997 3.4e-05 1e-06 -0.000702</pose>
+          <velocity>4e-06 -0.001295 1e-06 0.069534 -8e-05 -8.3e-05</velocity>
+          <acceleration>-0.00378 -4.34307 0.002302 0.8382 -0.214936 -0.139479</acceleration>
+          <wrench>-0.00378 -4.34307 0.002302 0 -0 0</wrench>
         </link>
         <link name='front_left_wheel'>
-          <pose>0.049333 0.073203 0.025 1.57081 0.765919 3.1415</pose>
-          <velocity>0.000702 2.6e-05 0.001844 -0.001023 0.026725 4.4e-05</velocity>
-          <acceleration>1.4261 -0.030055 3.68831 -2.05178 0.900111 0.145263</acceleration>
-          <wrench>0.071305 -0.001503 0.184416 0 -0 0</wrench>
+          <pose>0.050305 0.070386 0.025 -1.57135 -0.007506 -0.000698</pose>
+          <velocity>-4e-06 0.001271 0.005037 -0.046889 -0.00017 -8.2e-05</velocity>
+          <acceleration>-0.001941 3.43628 9.90679 -2.48746 -0.158306 -0.228367</acceleration>
+          <wrench>-9.7e-05 0.171814 0.49534 0 -0 0</wrench>
         </link>
         <link name='front_right_wheel'>
-          <pose>0.04932 -0.066797 0.025 -1.57079 0.756344 3.1415</pose>
-          <velocity>0.00071 3.1e-05 0.001849 -0.001214 0.027012 -3.8e-05</velocity>
-          <acceleration>1.44084 -0.020404 3.69716 -2.43472 1.09434 -0.127244</acceleration>
-          <wrench>0.072042 -0.00102 0.184858 0 -0 0</wrench>
+          <pose>0.050207 -0.069605 0.024995 1.5713 -0.012232 -0.000707</pose>
+          <velocity>2e-05 0.001292 -0.005058 -0.047212 6.5e-05 4e-05</velocity>
+          <acceleration>0.014292 3.45686 -9.92296 -2.81047 -0.015638 -0.027314</acceleration>
+          <wrench>0.000715 0.172843 -0.496148 0 -0 0</wrench>
         </link>
         <link name='rear_left_wheel'>
-          <pose>-0.050663 0.073213 0.024998 1.57081 -0.716697 3.14149</pose>
-          <velocity>0.000713 5.6e-05 -0.001859 0.001021 -0.035888 4.7e-05</velocity>
-          <acceleration>1.44781 0.029734 -3.7173 2.04919 1.50103 0.154761</acceleration>
-          <wrench>0.07239 0.001487 -0.185865 0 -0 0</wrench>
+          <pose>-0.049695 0.070457 0.025 -1.57135 0.010112 -0.000707</pose>
+          <velocity>1.1e-05 0.001297 0.00503 -0.047879 0.000447 0.000162</velocity>
+          <acceleration>0.013471 3.46766 9.89686 2.80516 0.216523 0.174387</acceleration>
+          <wrench>0.000674 0.173383 0.494843 0 -0 0</wrench>
         </link>
         <link name='rear_right_wheel'>
-          <pose>-0.050676 -0.066787 0.024998 -1.57079 -0.707214 3.1415</pose>
-          <velocity>0.000721 5.1e-05 -0.001863 0.001215 -0.035854 -3.7e-05</velocity>
-          <acceleration>1.46334 0.019968 -3.72515 -0.704973 1.43864 3.01746</acceleration>
-          <wrench>0.073167 0.000998 -0.186257 0 -0 0</wrench>
+          <pose>-0.049793 -0.069535 0.024995 1.57131 0.007734 -0.000699</pose>
+          <velocity>2e-06 0.001321 -0.005059 -0.048197 6.5e-05 3.9e-05</velocity>
+          <acceleration>-0.003301 3.49086 -9.92708 2.48769 -0.014978 -0.02901</acceleration>
+          <wrench>-0.000165 0.174543 -0.496354 0 -0 0</wrench>
         </link>
       </model>
       <model name='ros_symbol'>
-        <pose>-0.069809 -1.56985 0 0 -0 0</pose>
+        <pose>0.280885 -2.01317 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='symbol'>
-          <pose>-0.069809 -1.56985 0 0 -0 0</pose>
+          <pose>0.280885 -2.01317 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1141,7 +1126,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>5.4175 -5.50493 5.82681 0 0.711643 2.46419</pose>
+        <pose>5 -5 2 0 0.275643 2.35619</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
