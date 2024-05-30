@@ -1,0 +1,4 @@
+source;share/libot/local_setup.bash
+source;share/libot/local_setup.dsv
+source;share/libot/local_setup.sh
+source;share/libot/local_setup.zsh
